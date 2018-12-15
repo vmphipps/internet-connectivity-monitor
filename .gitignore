@@ -1,5 +1,6 @@
 # Output #
 Log.txt
+target/
 
 # IntelliJ #
 .idea
