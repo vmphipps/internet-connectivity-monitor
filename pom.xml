@@ -10,23 +10,51 @@
 
     <packaging>jar</packaging>
     <properties>
-        <maven.compiler.source>1.11</maven.compiler.source>
-        <maven.compiler.target>1.11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
     </properties>
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>UserInterface</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
+                <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                <artifactId>launch4j-maven-plugin</artifactId>
+                <version>1.7.24</version>
+                <executions>
+                    <execution>
+                        <id>l4j-clui</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>launch4j</goal>
+                        </goals>
+                        <configuration>
+                            <headerType>gui</headerType>
+                            <outfile>target/InternetConnectivityMonitor.exe</outfile>
+                            <jar>internet-connectivity-monitor-1.0-SNAPSHOT.jar</jar>
+                            <dontWrapJar>true</dontWrapJar>
+                            <errTitle>InternetConnectivityMonitor</errTitle>
+                            <classPath>
+                                <mainClass>UserInterface</mainClass>
+                            </classPath>
+                            <jre>
+                                <path>%JAVA_HOME%</path>
+                                <minVersion>1.8.0</minVersion>
+                            </jre>
+                            <versionInfo>
+                                <fileVersion>1.0.0.0</fileVersion>
+                                <txtFileVersion>N/A</txtFileVersion>
+                                <fileDescription>Launches Internet Connectivity Monitor</fileDescription>
+                                <copyright>Licensed under the GNU General Public License v3.0</copyright>
+                                <productVersion>1.4.1.0</productVersion>
+                                <txtProductVersion>Version forked from Google Code</txtProductVersion>
+                                <productName>Internet Connectivity Monitor</productName>
+                                <internalName>internet-connectivity-monitor</internalName>
+                                <originalFilename>InternetConnectivityMonitor.exe</originalFilename>
+                            </versionInfo>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
-    
 </project>
